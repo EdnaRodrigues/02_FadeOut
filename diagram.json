@@ -1,0 +1,66 @@
+{
+    "version": 1,
+    "author": "Edna Rodrigues de Souza",
+    "editor": "wokwi",
+    "parts": [
+      {
+        "type": "board-pi-pico-w",
+        "id": "pico",
+        "top": -3.25,
+        "left": 185.95,
+        "attrs": { "builder": "pico-sdk" }
+      },
+      {
+        "type": "wokwi-rgb-led",
+        "id": "rgb26",
+        "top": 4,
+        "left": 97.1,
+        "attrs": { "common": "cathode" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r1",
+        "top": 100.8,
+        "left": 143.45,
+        "rotate": 90,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r2",
+        "top": 100.8,
+        "left": 124.25,
+        "rotate": 90,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-resistor",
+        "id": "r3",
+        "top": 100.8,
+        "left": 105.05,
+        "rotate": 90,
+        "attrs": { "value": "330" }
+      },
+      {
+        "type": "wokwi-pushbutton-6mm",
+        "id": "btn1",
+        "top": 17,
+        "left": 144,
+        "attrs": { "color": "grey" }
+      }
+    ],
+    "connections": [
+      [ "pico:GP0", "$serialMonitor:RX", "", [] ],
+      [ "pico:GP1", "$serialMonitor:TX", "", [] ],
+      [ "pico:GND.4", "rgb26:COM", "black", [ "h0" ] ],
+      [ "rgb26:R", "r3:1", "red", [ "v0" ] ],
+      [ "rgb26:G", "r2:1", "green", [ "v19.2", "h49.3" ] ],
+      [ "rgb26:B", "r1:1", "blue", [ "v9.6", "h68.8" ] ],
+      [ "r3:2", "pico:GP13", "red", [ "h0", "v27.6" ] ],
+      [ "r2:2", "pico:GP11", "green", [ "h0", "v18" ] ],
+      [ "r1:2", "pico:GP12", "blue", [ "h0", "v18" ] ],
+      [ "pico:GP5", "btn1:2.r", "gray", [ "h-9.6", "v-28.8" ] ],
+      [ "pico:GND.1", "btn1:1.r", "black", [ "h-9.6", "v-9.6" ] ]
+    ],
+    "dependencies": {}
+  }
