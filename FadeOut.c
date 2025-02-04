@@ -72,7 +72,6 @@ int64_t turn_off_callback(alarm_id_t id, void *user_data) {
 void gpio_irq_handler(uint gpio, uint32_t events) {
     
     uint32_t current_time = to_us_since_boot(get_absolute_time());
-    static volatile uint32_t last_time = 0; // Armazena o tempo do último evento (em microssegundos)
     
     if (current_time - last_time > 300000) { //Apenas ativa as funções quando o intervalo entre acionamentos é superior a 0.3 segundos
         last_time = current_time; //Atualiza o tempo do último evento
@@ -98,28 +97,25 @@ int main() {
 
     //Inicializa os pinos do LED RGB como saídas digitais.
     gpio_init(green_pin);
-    gpio_set_dir(green_pin,true);
+    gpio_set_dir(green_pin,GPIO_OUT);
     gpio_init(blue_pin);
-    gpio_set_dir(blue_pin,true);
+    gpio_set_dir(blue_pin,GPIO_OUT);
     gpio_init(red_pin);
-    gpio_set_dir(red_pin,true);
+    gpio_set_dir(red_pin,GPIO_OUT);
 
     //Inicializa os pinos do botão como entradas digitais.
     gpio_init(button_A);
-    gpio_set_dir(button_A, GPIO_OUT);
+    gpio_set_dir(button_A, GPIO_IN);
     gpio_pull_up(button_A); //Habilita o resistor pull-up interno para o pino do botão, garantindo que o pino seja lido como 0 quando o botão está pressionado.
 
     //Interrupções por botóes habilitadas
     gpio_set_irq_enabled_with_callback(button_A, GPIO_IRQ_EDGE_FALL, true, & gpio_irq_handler);
 
     while (true) {
-        
-        //Ao ativar a rotina com o botão acionado, ligar LEDs e chamar a função add_alarm_in_ms().
-
         // Agenda um alarme para desligar o LED após 3 segundos (3000 ms).
         // A função 'turn_off_callback' será chamada após esse tempo.
         //add_alarm_in_ms(3000, turn_off_callback, NULL, false);
-        sleep_ms(1);
+        sleep_ms(100);
         //tight_loop_contents(); // Função que otimiza o loop vazio para evitar consumo excessivo de CPU.
 
     }
