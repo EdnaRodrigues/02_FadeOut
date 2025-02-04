@@ -43,7 +43,7 @@ void apagar_led (int apaga) {
 // Função de callback para desligar LEDs após o tempo programado.
 int64_t turn_off_callback(alarm_id_t id, void *user_data) {
     
-    // Rotina para desligamento de LEDs.
+    // Rotinas para desligamento de LEDs.
     
     if (i == 1) {
         apagar_led (i); //Desligar 1 dos LEDs.
@@ -80,6 +80,8 @@ void gpio_irq_handler(uint gpio, uint32_t events) {
             apagar_led(0); // Liga todos os LEDs.
             led_on = true; // Define-se 'led_on' como true para indicar que existe LED aceso.
             i = 1; // Indicar a primeira chamada de alarme.
+            // Agenda um alarme para desligar o LED após 3 segundos (3000 ms).
+            // A função 'turn_off_callback' será chamada após esse tempo.
             add_alarm_in_ms(3000, turn_off_callback, NULL, false);
             }
         /*} else if (gpio == button_B) {
@@ -112,13 +114,9 @@ int main() {
     gpio_set_irq_enabled_with_callback(button_A, GPIO_IRQ_EDGE_FALL, true, & gpio_irq_handler);
 
     while (true) {
-        // Agenda um alarme para desligar o LED após 3 segundos (3000 ms).
-        // A função 'turn_off_callback' será chamada após esse tempo.
-        //add_alarm_in_ms(3000, turn_off_callback, NULL, false);
-        sleep_ms(100);
-        //tight_loop_contents(); // Função que otimiza o loop vazio para evitar consumo excessivo de CPU.
-
+        tight_loop_contents(); // Função que otimiza o loop vazio para evitar consumo excessivo de CPU.
     }
+    
     // Retorno de 0, que nunca será alcançado devido ao loop infinito.
     // Isso é apenas uma boa prática em programas com um ponto de entrada main().
     return 0;
