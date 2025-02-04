@@ -119,8 +119,8 @@ int main() {
         // Agenda um alarme para desligar o LED após 3 segundos (3000 ms).
         // A função 'turn_off_callback' será chamada após esse tempo.
         //add_alarm_in_ms(3000, turn_off_callback, NULL, false);
-
-        tight_loop_contents(); // Função que otimiza o loop vazio para evitar consumo excessivo de CPU.
+        sleep_ms(1);
+        //tight_loop_contents(); // Função que otimiza o loop vazio para evitar consumo excessivo de CPU.
 
     }
     // Retorno de 0, que nunca será alcançado devido ao loop infinito.
