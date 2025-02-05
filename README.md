@@ -11,6 +11,7 @@ Este projeto implementa um sistema de temporização para acionamento de LEDs ut
 - **Uso de temporizador para controle de atraso (3 segundos entre estados)**.
 - **Prevenção de reativação durante a execução das rotinas**.
 - **Implementação de debounce por software para estabilidade do botão**.
+- **Simulação utilizando o simulador WokWi integrado ao VSCode**.
 - **Simulação no BitDogLab com LED RGB e Botão A**.
 
 ---
@@ -34,11 +35,63 @@ O código principal:
 ---
 
 ## 📌 Como Rodar o Projeto
-1. **Faça git clone** deste repositório no Visual Studio Code.
-2. **Importe a pasta como projeto Raspberry Pi Pico**.
-3. **Compile e grave o código na placa**.
-4. **Experimente a simulação com LEDs e Botão no Wokwi integrado ao VSCode** ou **adicione o executável na placa BitDogLab**.
-5. **Pressione o botão para iniciar a sequência de fade-out dos LEDs**.
+### **Softwares Necessários**
+1. **VS Code** com a extensão **Raspberry Pi Pico** instalada.
+2. **CMake** e **Ninja** configurados.
+3. **SDK do Raspberry Pi Pico** corretamente configurado.
+4. Simulador **Wokwi** instalado e integrado ao VS Code.
+
+### **Clonando o Repositório**
+Para começar, clone o repositório no seu computador:
+```bash
+git clone https://github.com/EdnaRodrigues/02_FadeOut
+cd 02_FadeOut
+```
+
+---
+
+### **Execução no Projeto no VS Code**
+
+#### **1. Importar o Projeto**
+Após clonar o repositório:
+1. Abra o **VS Code**.
+2. No menu **Raspberry Pi Pico**, selecione **Import Project**.
+3. Escolha a pasta clonada e clique em **Import**.
+
+#### **2. Compilar o Código**
+1. Clique no ícone **Raspberry Pi Pico** no lado esquerdo do VS Code.
+2. Escolha a opção **Compile Project** para compilar o código.
+
+---
+
+### **Execução no Simulador Wokwi**
+
+#### **1. Configurar o Simulador Wokwi**
+1. Abra o arquivo `diagram.json` incluído no repositório.
+2. Certifique-se de que o arquivo JSON está configurado corretamente para a simulação do hardware necessário:
+   - LEDs conectados aos pinos GPIO 11, 12 e 13.
+
+#### **2. Executar a Simulação**
+1. Abra o painel do simulador Wokwi no VS Code.
+2. Clique em **Play** para iniciar a simulação.
+3. Aperte o botão A para acionamento dos LEDs.
+4. Observe a mudança de estados entre os LEDs.
+
+---
+
+### **Execução na Placa BitDogLab**
+
+#### **1. Coloque em Modo Reboot**
+1. Aperte o botão **BOOTSEL** no microcontrolador Raspberry Pi Pico W.
+2. Ao mesmo tempo, aperte o botão de **Reset**.
+
+#### **2. Upload de Arquivo `FadeOut.uf2`**
+1. Abra a pasta `build` incluído no repositório.
+2. Mova o arquivo `FadeOut.uf2` para a placa de desenvolvimento.
+
+#### **3. Acompanhar Execução do Programa**
+1. Aperte o botão A para acionamento dos LEDs.
+2. Observe a mudança de estados entre os LEDs.
 
 ---
 
