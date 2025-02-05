@@ -27,8 +27,8 @@ void apagar_led (int apaga) {
         gpio_put(red_pin, true);
     } else if (apaga == 2) { // Cor azul, 1 LED ligado.
         gpio_put(green_pin, false);
-        gpio_put(blue_pin, true);
-        gpio_put(red_pin, false);
+        gpio_put(blue_pin, false);
+        gpio_put(red_pin, true);
     } else if (apaga == 3) { // LEDs desligados.
         gpio_put(green_pin, false);
         gpio_put(blue_pin, false);

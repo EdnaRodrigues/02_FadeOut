@@ -17,7 +17,7 @@ Este projeto implementa um sistema de temporização para acionamento de LEDs ut
 
 ## 🔧 Hardware Necessário - Presentes na Placa de Desenvolvimento BitDogLab
 - **Microcontrolador Raspberry Pi Pico W**
-- **LED RGB**, ou 3 LEDs nas cores: vermelho, verde e azul.
+- **LED RGB**, ou **3 LEDs** nas cores: vermelho (GPIO 13), verde (GPIO 11) e azul (GPIO 12).
 - **3 Resistores de valor adequado** (Sugestão de 3 Resistores de 330 Ω).
 - **Botão (Pushbutton)**, denominado como A na placa de desenvolvimento.
 - **Fonte de alimentação adequada**.
@@ -37,9 +37,8 @@ O código principal:
 1. **Faça git clone** deste repositório no Visual Studio Code.
 2. **Importe a pasta como projeto Raspberry Pi Pico**.
 3. **Compile e grave o código na placa**.
-4. **Pressione o botão para iniciar a sequência de fade-out dos LEDs**.
-5. **Adicione o executável na placa BitDogLab**
-6. **Experimente a simulação com LED RGB e Botão no Wokwi integrado ao VSCode**.
+4. **Experimente a simulação com LEDs e Botão no Wokwi integrado ao VSCode** ou **adicione o executável na placa BitDogLab**.
+5. **Pressione o botão para iniciar a sequência de fade-out dos LEDs**.
 
 ---
 
