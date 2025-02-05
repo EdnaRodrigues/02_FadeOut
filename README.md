@@ -70,6 +70,7 @@ Após clonar o repositório:
 1. Abra o arquivo `diagram.json` incluído no repositório.
 2. Certifique-se de que o arquivo JSON está configurado corretamente para a simulação do hardware necessário:
    - LEDs conectados aos pinos GPIO 11, 12 e 13.
+   - Botão conectado ao pino 5.
 
 #### **2. Executar a Simulação**
 1. Abra o painel do simulador Wokwi no VS Code.
